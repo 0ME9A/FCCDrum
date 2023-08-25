@@ -1,6 +1,6 @@
 "use client";
 
-import { audioDataType, keys, audioData } from "@/src/data/audioData";
+import { audioDataType, keys, getAudioData } from "@/src/data/audioData";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 function Drum() {
@@ -8,6 +8,9 @@ function Drum() {
   const [power, setPower] = useState<boolean>(true);
   const [mode, setMode] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(20);
+  const [isMount, setMount] = useState(false);
+
+  const audioData = getAudioData();
 
   const handleVolume = (e: ChangeEvent<HTMLInputElement>) => {
     setVolume(Number(e.target.value));
@@ -54,6 +57,10 @@ function Drum() {
   };
 
   useEffect(() => {
+    setMount(true);
+  }, []);
+
+  useEffect(() => {
     if (display) {
       const clearDisplayDebounced = debounce(() => {
         setDisplay("");
@@ -77,6 +84,8 @@ function Drum() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [power, mode, volume]);
+
+  if (!isMount) return <p className="animate-pulse">Loading please wait...</p>;
 
   return (
     <section
