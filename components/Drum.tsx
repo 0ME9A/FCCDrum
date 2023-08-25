@@ -64,14 +64,14 @@ function Drum() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (keys.includes(event.key)) {
+      if (keys.includes(event.key) && typeof window !== "undefined") {
         const filterDrum = audioData.filter((item) => item.key === event.key);
-
         if (power && filterDrum[0]) {
           playAudio(filterDrum[0]);
         }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [power, mode, volume]);
