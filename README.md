@@ -17,8 +17,8 @@ Welcome to FCC Drum, a virtual drum machine that lets you create beats and rhyth
 To start using FCC Drum, simply follow these steps:
 
 1. Clone this repository to your local machine.
-2. Open the project in your code editor.
-3. Run the development server using `npm run dev`..
+2. Install dependency using `npm install`.
+3. Run the development server using `npm run dev`.
 4. Open your browser and navigate to the provided URL (usually `http://localhost:3000`).
 5. Start creating your beats and rhythms using the keyboard or mouse!
 
@@ -31,7 +31,7 @@ To start using FCC Drum, simply follow these steps:
 
 ## Technologies Used
 
-- React
+- NextJs 13
 - HTML5 Audio API
 
 ## Contributing
