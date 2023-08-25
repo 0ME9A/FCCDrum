@@ -23,19 +23,21 @@ function Drum() {
   };
 
   const playAudio = (audioDetails: audioDataType) => {
-    if (!mode) {
-      const audio = audioDetails.file1.audio;
-      if (audio) {
-        audio.play();
-        audio.volume = volume / 100;
-        setDisplay(audioDetails.file1.name);
-      }
-    } else {
-      const audio = audioDetails.file2.audio;
-      if (audio) {
-        audio.play();
-        audio.volume = volume / 100;
-        setDisplay(audioDetails.file2.name);
+    if (typeof window !== "undefined") {
+      if (!mode) {
+        const audio = audioDetails.file1.audio;
+        if (audio) {
+          audio.play();
+          audio.volume = volume / 100;
+          setDisplay(audioDetails.file1.name);
+        }
+      } else {
+        const audio = audioDetails.file2.audio;
+        if (audio) {
+          audio.play();
+          audio.volume = volume / 100;
+          setDisplay(audioDetails.file2.name);
+        }
       }
     }
   };
